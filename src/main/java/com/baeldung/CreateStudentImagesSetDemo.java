@@ -6,40 +6,31 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.Set;
 
-public class CreateStudentImagesSetDemo {
+class CreateStudentImagesSetDemo {
     public static void main(String[] args) {
         Configuration configuration = new Configuration();
 
         configuration.configure("hibernate.cfg.xml");
 
-        configuration.addAnnotatedClass(Student.class);
+        configuration.addAnnotatedClass(Student3.class);
 
         SessionFactory factory = configuration.buildSessionFactory();
 
         Session session = factory.getCurrentSession();
 
+        Student3 tempStudent = new Student3("Paul", "Wall", "paul@coding.com");
+        Set<String> theImages = tempStudent.getImages();
+
+        theImages.add("photo1.jpg");
+        theImages.add("photo2.jpg");
+        theImages.add("photo3.jpg");
+        theImages.add("photo4.jpg");
+        theImages.add("photo5.jpg");
+
         session.getTransaction().begin();
 
-        try {
-            Student tempStudent = new Student("John", "Doe", "john@luv2code.com");
-            Set<String> theImages = tempStudent.getImages();
+        session.persist(tempStudent);
 
-            theImages.add("photo1.jpg");
-            theImages.add("photo2.jpg");
-            theImages.add("photo3.jpg");
-            theImages.add("photo4.jpg");
-            theImages.add("photo5.jpg");
-            theImages.add("photo6.jpg");
-            theImages.add("photo7.jpg");
-
-            session.persist(tempStudent);
-
-            session.getTransaction().commit();
-
-        } finally {
-            session.close();
-            factory.close();
-        }
-
+        session.getTransaction().commit();
     }
 }
