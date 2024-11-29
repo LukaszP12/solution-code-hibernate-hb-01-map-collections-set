@@ -26,6 +26,7 @@ class Student5 {
     @Column(name = "email")
     private String email;
 
+    // @Embedded is optional
     @Embedded
     private Address homeAddress;
 
