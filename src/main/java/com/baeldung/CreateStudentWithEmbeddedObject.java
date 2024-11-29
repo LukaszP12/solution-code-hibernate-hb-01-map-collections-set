@@ -21,7 +21,10 @@ class CreateStudentWithEmbeddedObject {
 
         Address homeAddress = new Address("1 main St", "Philadelphia", "19103");
 
+        Address billingAddress = new Address("Some Billing Address", "Some Billing City", "101010");
+
         tempStudent.setHomeAddress(homeAddress);
+        tempStudent.setBillingAddress(billingAddress);
 
         session.getTransaction().begin();
 
