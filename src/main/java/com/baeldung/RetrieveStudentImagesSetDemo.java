@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.Set;
 
-class CreateStudentImagesSetDemo {
+class RetrieveStudentImagesSetDemo {
     public static void main(String[] args) {
         Configuration configuration = new Configuration();
 
@@ -18,19 +18,15 @@ class CreateStudentImagesSetDemo {
 
         Session session = factory.getCurrentSession();
 
-        Student3 tempStudent = new Student3("Paul", "Wall", "paul@coding.com");
-        Set<String> theImages = tempStudent.getImages();
-
-        theImages.add("photo1.jpg");
-        theImages.add("photo2.jpg");
-        theImages.add("photo3.jpg");
-        theImages.add("photo4.jpg");
-        theImages.add("photo5.jpg");
-
         session.getTransaction().begin();
 
-        session.persist(tempStudent);
+        Student3 student3 = session.find(Student3.class,1);
+        Set<String> images = student3.getImages();
+
+        System.out.println("images belonging to " + student3.getFirstName() + ", " + student3.getLastName());
+        images.forEach(System.out::println);
 
         session.getTransaction().commit();
+
     }
 }
