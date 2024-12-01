@@ -23,6 +23,7 @@ class CreateStudentImagesMapDemo {
         // Each image will have a file name and description
         // Duplicate file names are not allowed
 
+
         Student2 tempStudent = new Student2("John", "Doe", "john@coding.com");
         Map<String, String> theImages = tempStudent.getImages();
 

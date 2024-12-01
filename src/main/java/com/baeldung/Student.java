@@ -8,10 +8,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OrderColumn;
 import jakarta.persistence.Table;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "student1")
@@ -33,8 +34,9 @@ public class Student {
     @ElementCollection
     @CollectionTable(name = "image1", // defaults to student_id
             joinColumns = @JoinColumn(name = "student_id"))
+    @OrderColumn
     @Column(name = "file_name") // default
-    private Set<String> images = new HashSet<>();
+    private List<String> images = new ArrayList<>();
 
     public Student() {
     }
@@ -77,11 +79,11 @@ public class Student {
         this.email = email;
     }
 
-    public Set<String> getImages() {
+    public List<String> getImages() {
         return images;
     }
 
-    public void setImages(Set<String> images) {
+    public void setImages(List<String> images) {
         this.images = images;
     }
 

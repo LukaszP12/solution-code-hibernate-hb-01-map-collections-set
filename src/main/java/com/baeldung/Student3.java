@@ -10,7 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -34,7 +33,7 @@ class Student3 {
 
     @ElementCollection
     @CollectionTable(name = "image3")
-    @OrderBy("file_name DESC")
+    @OrderBy("file_name desc")
     @Column(name = "file_name")
     private Set<String> images = new LinkedHashSet<>();
 

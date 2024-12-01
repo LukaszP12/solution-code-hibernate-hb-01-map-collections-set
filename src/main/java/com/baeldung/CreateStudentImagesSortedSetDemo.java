@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.Set;
 
-class CreateStudentImagesSetDemo {
+class CreateStudentImagesSortedSetDemo {
     public static void main(String[] args) {
         Configuration configuration = new Configuration();
 
